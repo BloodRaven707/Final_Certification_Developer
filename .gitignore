@@ -1,0 +1,23 @@
+# Recommended: Go.AllowList.gitignore
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+
+# Ignore everything
+*
+
+# But not these files...
+!/.gitignore
+!*.go
+!go.sum
+!go.mod
+
+!README.md
+!LICENSE
+
+# !Makefile
+
+# ...even if they are in subdirectories
+!*/
+
+# To GeekBrains no ingore
+!Full_Task/*
+!Task_*
