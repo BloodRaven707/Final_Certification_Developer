@@ -1,0 +1,189 @@
+raven@raven-vm:~$ cat > "Домашние животние"
+кошки
+собаки
+хомяки
+^C
+
+raven@raven-vm:~$ cat > "Вьючные животние"
+лошади
+верблюды
+ослы
+^C
+
+raven@raven-vm:~$ cat "Домашние животние" "Вьючные животние" > "Human friends"
+
+raven@raven-vm:~$ cat "Human friends"
+кошки
+собаки
+хомяки
+лошади
+верблюды
+ослы
+
+raven@raven-vm:~$ mv "Human friends" "Друзья человека"
+
+raven@raven-vm:~$ ls
+ Desktop     Music      snap        test.txt.bak       'Домашние животние'
+ Documents   Pictures   Templates   Videos             'Друзья человека'
+ Downloads   Public     test.txt   'Вьючные животние'
+
+raven@raven-vm:~$ mkdir animals
+raven@raven-vm:~$ mv "Друзья человека" ./animals/
+
+raven@raven-vm:~$ cd animals/
+
+raven@raven-vm:~/animals$ ls
+'Друзья человека'
+
+raven@raven-vm:~/animals$ cd ..
+
+raven@raven-vm:~$ rm -rf animals/
+raven@raven-vm:~$ rm "Вьючные животние"
+raven@raven-vm:~$ rm "Домашние животние"
+
+raven@raven-vm:~$ ls
+Desktop    Downloads  Pictures  snap       test.txt      Videos
+Documents  Music      Public    Templates  test.txt.bak
+
+raven@raven-vm:~$ sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.25-1_all.deb
+--2023-07-23 12:10:07--  https://dev.mysql.com/get/mysql-apt-config_0.8.25-1_all.deb
+Resolving dev.mysql.com (dev.mysql.com)... 23.61.243.80, 2001:2030:21:187::2e31, 2001:2030:21:19e::2e31
+Connecting to dev.mysql.com (dev.mysql.com)|23.61.243.80|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://repo.mysql.com//mysql-apt-config_0.8.25-1_all.deb [following]
+--2023-07-23 12:10:07--  https://repo.mysql.com//mysql-apt-config_0.8.25-1_all.deb
+Resolving repo.mysql.com (repo.mysql.com)... 184.50.200.228
+Connecting to repo.mysql.com (repo.mysql.com)|184.50.200.228|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 18120 (18K) [application/x-debian-package]
+Saving to: ‘mysql-apt-config_0.8.25-1_all.deb’
+
+mysql-apt-config_0. 100%[===================>]  17,70K  --.-KB/s    in 0s
+
+2023-07-23 12:10:08 (144 MB/s) - ‘mysql-apt-config_0.8.25-1_all.deb’ saved [18120/18120]
+
+raven@raven-vm:~$ sudo dpkg -i mysql-apt-config_0.8.25-1_all.deb
+Selecting previously unselected package mysql-apt-config.
+(Reading database ... 186229 files and directories currently installed.)
+Preparing to unpack mysql-apt-config_0.8.25-1_all.deb ...
+Unpacking mysql-apt-config (0.8.25-1) ...
+Setting up mysql-apt-config (0.8.25-1) ...
+
+raven@raven-vm:~$ sudo apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+Get:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease [108 kB]
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Get:5 http://repo.mysql.com/apt/ubuntu jammy InRelease [20,3 kB]
+Get:6 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 Sources [963 B]
+Get:7 http://repo.mysql.com/apt/ubuntu jammy/mysql-apt-config i386 Packages [565 B]
+Get:8 http://repo.mysql.com/apt/ubuntu jammy/mysql-apt-config amd64 Packages [565 B]
+Get:9 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 Packages [12,7 kB]
+Get:10 http://repo.mysql.com/apt/ubuntu jammy/mysql-tools amd64 Packages [8 011 B]
+Get:11 http://repo.mysql.com/apt/ubuntu jammy/mysql-tools i386 Packages [457 B]
+Fetched 270 kB in 1s (196 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+2 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+raven@raven-vm:~$ sudo apt install mysql-client
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+The following additional packages will be installed:
+  mysql-common mysql-community-client mysql-community-client-core
+  mysql-community-client-plugins
+The following NEW packages will be installed:
+  mysql-client mysql-common mysql-community-client mysql-community-client-core
+  mysql-community-client-plugins
+0 upgraded, 5 newly installed, 0 to remove and 2 not upgraded.
+Need to get 5 769 kB of archives.
+After this operation, 74,1 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-common amd64 8.0.34-1ubuntu22.04 [67,7 kB]
+Get:2 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client-plugins amd64 8.0.34-1ubuntu22.04 [1 435 kB]
+Get:3 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client-core amd64 8.0.34-1ubuntu22.04 [2 087 kB]
+Get:4 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client amd64 8.0.34-1ubuntu22.04 [2 113 kB]
+Get:5 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-client amd64 8.0.34-1ubuntu22.04 [66,4 kB]
+Fetched 5 769 kB in 1s (6 544 kB/s)
+Selecting previously unselected package mysql-common.
+(Reading database ... 186234 files and directories currently installed.)
+Preparing to unpack .../mysql-common_8.0.34-1ubuntu22.04_amd64.deb ...
+Unpacking mysql-common (8.0.34-1ubuntu22.04) ...
+Selecting previously unselected package mysql-community-client-plugins.
+Preparing to unpack .../mysql-community-client-plugins_8.0.34-1ubuntu22.04_amd64
+.deb ...
+Unpacking mysql-community-client-plugins (8.0.34-1ubuntu22.04) ...
+Selecting previously unselected package mysql-community-client-core.
+Preparing to unpack .../mysql-community-client-core_8.0.34-1ubuntu22.04_amd64.de
+b ...
+Unpacking mysql-community-client-core (8.0.34-1ubuntu22.04) ...
+Selecting previously unselected package mysql-community-client.
+Preparing to unpack .../mysql-community-client_8.0.34-1ubuntu22.04_amd64.deb ...
+Unpacking mysql-community-client (8.0.34-1ubuntu22.04) ...
+Selecting previously unselected package mysql-client.
+Preparing to unpack .../mysql-client_8.0.34-1ubuntu22.04_amd64.deb ...
+Unpacking mysql-client (8.0.34-1ubuntu22.04) ...
+Setting up mysql-common (8.0.34-1ubuntu22.04) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.c
+nf (my.cnf) in auto mode
+Setting up mysql-community-client-plugins (8.0.34-1ubuntu22.04) ...
+Setting up mysql-community-client-core (8.0.34-1ubuntu22.04) ...
+Setting up mysql-community-client (8.0.34-1ubuntu22.04) ...
+Setting up mysql-client (8.0.34-1ubuntu22.04) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+
+raven@raven-vm:~$ sudo apt remove mysql-client
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  mysql-common mysql-community-client mysql-community-client-core
+  mysql-community-client-plugins
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  mysql-client
+0 upgraded, 0 newly installed, 1 to remove and 2 not upgraded.
+After this operation, 77,8 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 186326 files and directories currently installed.)
+Removing mysql-client (8.0.34-1ubuntu22.04) ...
+
+raven@raven-vm:~$ sudo dpkg -i mysql-apt-config_0.8.25-1_all.deb && sudo apt update && sudo apt install mysql-client
+(Reading database ... 186320 files and directories currently installed.)
+Preparing to unpack mysql-apt-config_0.8.25-1_all.deb ...
+Unpacking mysql-apt-config (0.8.25-1) over (0.8.25-1) ...
+Setting up mysql-apt-config (0.8.25-1) ...
+Hit:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Get:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease [108 kB]
+Hit:4 http://repo.mysql.com/apt/ubuntu jammy InRelease
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Fetched 108 kB in 1s (153 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+2 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  mysql-client
+0 upgraded, 1 newly installed, 0 to remove and 2 not upgraded.
+Need to get 66,4 kB of archives.
+After this operation, 77,8 kB of additional disk space will be used.
+Get:1 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-client amd64 8.0.34-1ubuntu22.04 [66,4 kB]
+Fetched 66,4 kB in 0s (450 kB/s)
+Selecting previously unselected package mysql-client.
+(Reading database ... 186320 files and directories currently installed.)
+Preparing to unpack .../mysql-client_8.0.34-1ubuntu22.04_amd64.deb ...
+Unpacking mysql-client (8.0.34-1ubuntu22.04) ...
+Setting up mysql-client (8.0.34-1ubuntu22.04) ...
+
+raven@raven-vm:~$ sudo dpkg -r mysql-client
+(Reading database ... 186326 files and directories currently installed.)
+Removing mysql-client (8.0.34-1ubuntu22.04) ...
+raven@raven-vm:~$

@@ -21,3 +21,4 @@
 # To GeekBrains no ingore
 !Full_Task/*
 !Task_*
+!.gitkeep
