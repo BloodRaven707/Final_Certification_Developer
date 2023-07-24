@@ -194,4 +194,88 @@ mv "Друзья человека" ./animals/
 <br><br>
 
 ## Команды SQL
-### ...
+### Создание базы данных
+```
+CREATE DATABASE IF NOT EXISTS human_friends;
+```
+<br>
+
+### Удаление базы данных
+```
+DROP DATABASE IF EXISTS human_friends;
+```
+<br>
+
+### Подключение к базе данных
+```
+USE human_friends;
+```
+<br>
+
+### Создание таблицы
+```
+CREATE TABLE animals (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	animal_type VARCHAR(20)
+);
+```
+<br>
+
+### Удаление таблицы
+```
+DROP TABLE camels;
+```
+
+<br>
+
+### Вставка данных
+```
+INSERT INTO animals (animal_type)
+VALUES
+	('Pack_animal'),
+	('Pet');
+```
+<br>
+
+### Вывод всех полей таблицы
+```
+SELECT * FROM animals;
+```
+<br>
+
+### Объединение таблицы и использование JOIN
+```
+CREATE TABLE equines AS
+  SELECT h.id, pan.animal_subtype, h.name, h.birthday, h.commands
+  FROM horses AS h JOIN pack_animals AS pan ON pan.animal_subtype = 'Horse'
+
+  UNION ALL
+  SELECT d.id, pan.animal_subtype, d.name, d.birthday, d.commands
+  FROM donkeys AS d JOIN pack_animals AS pan ON pan.animal_subtype = 'Donkey';
+```
+<br>
+
+### Объединение таблицы, использование JOIN, встроенные функции, работа с временными интервалами и условия для выборки данных
+```
+CREATE TABLE young_animals AS
+    SELECT a.id, a.animal_subtype, a.name, a.commands, TIMESTAMPDIFF(MONTH, a.birthday, CURDATE()) AS age_months
+    FROM (
+        SELECT id, 'cat' AS animal_subtype, name, birthday, commands FROM cats
+        UNION ALL
+        SELECT id, 'dog' AS animal_subtype , name, birthday, commands FROM dogs
+        UNION ALL
+        SELECT id, 'hamster' AS animal_subtype, name, birthday, commands FROM hamsters
+        UNION ALL
+        SELECT id, 'horse' AS animal_subtype, name, birthday, commands FROM horses
+        UNION ALL
+        SELECT id, 'donkey' AS animal_subtype, name, birthday, commands FROM donkeys
+    --    UNION ALL
+    --    SELECT id, 'camel' AS animal_subtype, name, birthday, commands FROM camels
+    ) AS a
+    WHERE a.birthday BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 YEAR) AND DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
+```
+
+<br>
+
+## Результат работы Task_3_SQL.sql
+![Результат работы Task_3_SQL](./Task_3_SQL.png)
