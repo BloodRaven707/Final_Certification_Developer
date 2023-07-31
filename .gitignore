@@ -22,4 +22,7 @@
 !Full_Task/*
 !Task_*
 !.gitkeep
+
 !*.py
+__*/
+env*/
