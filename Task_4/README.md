@@ -3,11 +3,17 @@ go mod init Task_4
 - Создает файл go.mod
 
 ## Пробный запуск
-go run .\cmd\main.go
+cd .\Task_4
+go run .\cmd
+
+## Остановить программу
+CTRL + C
 
 ## Сборка исполняемого файла
-go build -o bin/zoo.exe .\cmd\main.go
-- Создает файл zoo.exe в папке bin
+cd .\Task_4
+go build -o bin/zoo.exe .\cmd
+- Создает файл animalregistry.exe в папке bin
 
 ## Запуск исполняемого файла
-.\bin\zoo.exe
+cd .\Task_4
+.\bin\animalregistry.exe
